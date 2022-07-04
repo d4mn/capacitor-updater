@@ -288,6 +288,7 @@ public class CapacitorUpdaterPlugin extends Plugin implements Application.Activi
                                             Log.i(CapacitorUpdaterPlugin.this.TAG, "Download version: " + newVersion + " failed");
                                             return;
                                         }
+                                        ret.put("versionCode", dl);
                                         Log.i(CapacitorUpdaterPlugin.this.TAG, "New version: " + newVersion + " found. Current is " + (currentVersion.equals("") ? "builtin" : currentVersion) + ", next backgrounding will trigger update");
                                         CapacitorUpdaterPlugin.this.editor.putString("nextVersion", dl);
                                         CapacitorUpdaterPlugin.this.editor.putString("nextVersionName", (String) res.get("version"));
