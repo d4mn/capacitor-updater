@@ -155,6 +155,9 @@ public class CapacitorUpdaterPlugin extends Plugin implements Application.Activi
     public void set(final PluginCall call) {
         final String version = call.getString("version");
         final String versionName = call.getString("versionName", version);
+        final String tmpCurVersion = this.implementation.getLastPathHot();
+        final String curVersion = tmpCurVersion.substring(tmpCurVersion.lastIndexOf('/') +1);
+        final String curVersionName = this.implementation.getVersionName();
         final Boolean res = this.implementation.set(version, versionName);
 
         if (!res) {
@@ -165,6 +168,8 @@ public class CapacitorUpdaterPlugin extends Plugin implements Application.Activi
             this.editor.putString("LatestVersionNameAutoUpdate", versionName);
             this.editor.putString("nextVersion", "");
             this.editor.putString("nextVersionName", "");
+            this.editor.putString("pastVersion", curVersion);
+            this.editor.putString("pastVersionName", curVersionName);
             this.editor.putBoolean("notifyAppReady", false);
             this.editor.commit();
         }

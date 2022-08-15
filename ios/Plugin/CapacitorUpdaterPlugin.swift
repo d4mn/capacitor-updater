@@ -111,6 +111,8 @@ public class CapacitorUpdaterPlugin: CAPPlugin {
     @objc func set(_ call: CAPPluginCall) {
         let version = call.getString("version") ?? ""
         let versionName = call.getString("versionName") ?? version
+        let curVersion = implementation.getLastPathPersist().components(separatedBy: "/").last!
+        let curVersionName = implementation.getVersionName()
         let res = implementation.set(version: version, versionName: versionName)
         
         if (res && self._reload()) {
@@ -119,6 +121,8 @@ public class CapacitorUpdaterPlugin: CAPPlugin {
             UserDefaults.standard.set(versionName, forKey: "LatestVersionNameAutoUpdate")
             UserDefaults.standard.set("", forKey: "nextVersion")
             UserDefaults.standard.set("", forKey: "nextVersionName")
+            UserDefaults.standard.set(curVersion, forKey: "pastVersion")
+            UserDefaults.standard.set(curVersionName, forKey: "pastVersionName")
             UserDefaults.standard.set(false, forKey: "notifyAppReady")
             call.resolve()
         } else {
