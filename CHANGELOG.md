@@ -1,3 +1,33 @@
+## 3.3.17 (2022-08-05)
+
+### Fix
+
+- peer issues with capacitor
+
+## 3.3.16 (2022-08-03)
+
+### Fix
+
+- currentVersionNative convertion
+
+## 3.3.15 (2022-08-03)
+
+### Fix
+
+- updateAvailable listener
+
+## 3.3.14 (2022-08-03)
+
+### Fix
+
+- current method
+
+## 3.3.13 (2022-07-31)
+
+### Fix
+
+- UUID source on android
+
 ## 3.3.12 (2022-07-01)
 
 ### Fix

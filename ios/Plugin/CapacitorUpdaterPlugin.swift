@@ -181,7 +181,7 @@ public class CapacitorUpdaterPlugin: CAPPlugin {
         let current  = pathHot.count >= 10 ? pathHot.suffix(10) : "builtin"
         call.resolve([
             "current": current,
-            "currentNative": currentVersionNative
+            "currentNative": currentVersionNative.description
         ])
     }
 
@@ -230,7 +230,7 @@ public class CapacitorUpdaterPlugin: CAPPlugin {
                     print("✨  Capacitor-updater: New version: \(newVersion) found. Current is \(currentVersion == "" ? "builtin" : currentVersion), next backgrounding will trigger update")
                     UserDefaults.standard.set(dl, forKey: "nextVersion")
                     UserDefaults.standard.set(newVersion.description, forKey: "nextVersionName")
-                    self.notifyListeners("updateAvailable", data: ["version": newVersion, "versionCode": dl])
+                    self.notifyListeners("updateAvailable", data: ["version": newVersion.description, "versionCode": dl])
                 } catch {
                     print("✨  Capacitor-updater: Download version \(newVersion) fail", error.localizedDescription)
                 }
