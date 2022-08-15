@@ -115,6 +115,11 @@ public class CapacitorUpdaterPlugin: CAPPlugin {
         
         if (res && self._reload()) {
             print("✨  Capacitor-updater: Set to version: \(version) versionName: \(versionName)")
+            UserDefaults.standard.set(version, forKey: "LatestVersionAutoUpdate")
+            UserDefaults.standard.set(versionName, forKey: "LatestVersionNameAutoUpdate")
+            UserDefaults.standard.set("", forKey: "nextVersion")
+            UserDefaults.standard.set("", forKey: "nextVersionName")
+            UserDefaults.standard.set(false, forKey: "notifyAppReady")
             call.resolve()
         } else {
             call.reject("Update failed, version \(version) doesn't exist")

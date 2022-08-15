@@ -161,6 +161,12 @@ public class CapacitorUpdaterPlugin extends Plugin implements Application.Activi
             call.reject("Update failed, version " + version + " doesn't exist");
         } else {
             this.reload(call);
+            this.editor.putString("LatestVersionAutoUpdate", version);
+            this.editor.putString("LatestVersionNameAutoUpdate", versionName);
+            this.editor.putString("nextVersion", "");
+            this.editor.putString("nextVersionName", "");
+            this.editor.putBoolean("notifyAppReady", false);
+            this.editor.commit();
         }
     }
 
